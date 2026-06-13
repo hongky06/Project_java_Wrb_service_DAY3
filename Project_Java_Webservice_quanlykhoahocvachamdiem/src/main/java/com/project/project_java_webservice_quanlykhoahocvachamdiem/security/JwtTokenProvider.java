@@ -19,7 +19,6 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(SECRET.getBytes(StandardCharsets.UTF_8));
     }
 
-    // Access Token - hết hạn sau 30 phút
     public String generateAccessToken(User user) {
         return Jwts.builder()
                 .subject(user.getUsername())
@@ -30,7 +29,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // Refresh Token - hết hạn sau 7 ngày
     public String generateRefreshToken(User user) {
         return Jwts.builder()
                 .subject(user.getUsername())
@@ -40,7 +38,6 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // Giữ lại để tương thích nếu nơi nào đó còn dùng
     public String generateToken(String username, String role) {
         return Jwts.builder()
                 .subject(username)

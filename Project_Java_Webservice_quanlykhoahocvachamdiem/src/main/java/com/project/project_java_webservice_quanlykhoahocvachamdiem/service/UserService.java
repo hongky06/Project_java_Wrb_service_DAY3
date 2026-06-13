@@ -36,7 +36,6 @@ public class UserService {
 
         return userRepository.save(user);
     }
-    // Thêm vào UserService.java của ông
     public void changePassword(String username, String oldPassword, String newPassword) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User không tồn tại"));
@@ -50,7 +49,6 @@ public class UserService {
     }
 
     public void resetPassword(String username, String newPassword) {
-        // Chức năng quên mật khẩu (Bản đơn giản cho quản trị viên/hệ thống cấp lại hoặc bypass trực tiếp)
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User không tồn tại"));
         user.setPassword(passwordEncoder.encode(newPassword));

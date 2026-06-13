@@ -32,7 +32,7 @@ public class AuthService {
             throw new RuntimeException("Username đã tồn tại");
         if (userRepository.existsByEmail(request.getEmail()))
             throw new RuntimeException("Email đã tồn tại");
-
+z
         User user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))

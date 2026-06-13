@@ -27,7 +27,6 @@ public class SubmissionControllerTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // UT-06: Kiểm tra API endpoint nộp bài trả về mã trạng thái HTTP 201 CREATED
     @Test
     void testSubmit_ControllerSuccess() {
         SubmitRequest request = new SubmitRequest();
@@ -51,7 +50,6 @@ public class SubmissionControllerTest {
         assertNotNull(response.getBody());
     }
 
-    // UT-07: Kiểm tra API endpoint chấm điểm phản hồi đúng điểm số và HTTP 200 OK
     @Test
     void testGrade_ControllerSuccess() {
         GradeRequest gradeRequest = new GradeRequest();
@@ -73,7 +71,6 @@ public class SubmissionControllerTest {
         assertEquals(10.0, response.getBody().getScore());
     }
 
-    // UT-08: Đảm bảo Controller truyền đúng dữ liệu xuống tầng Service khi học viên nộp bài
     @Test
     void testSubmit_VerifyServiceCall() {
         SubmitRequest request = new SubmitRequest();
@@ -88,7 +85,6 @@ public class SubmissionControllerTest {
         verify(submissionService, times(1)).submitAssignment(request);
     }
 
-    // UT-09: Đảm bảo Controller truyền đúng tham số chấm điểm xuống tầng Service xử lý
     @Test
     void testGrade_VerifyServiceCall() {
         GradeRequest gradeRequest = new GradeRequest();
@@ -103,7 +99,6 @@ public class SubmissionControllerTest {
         verify(submissionService, times(1)).gradeSubmission(2L, 7.5, "Pass");
     }
 
-    // UT-10: Kiểm tra phản hồi từ API Controller không được phép trống rỗng rác dữ liệu
     @Test
     void testController_NonNullResponse() {
         SubmitRequest request = new SubmitRequest();

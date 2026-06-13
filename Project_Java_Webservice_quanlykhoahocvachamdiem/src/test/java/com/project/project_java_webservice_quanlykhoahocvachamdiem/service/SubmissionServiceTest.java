@@ -38,7 +38,6 @@ public class SubmissionServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // UT-01: Kiểm tra nộp bài thành công với Link GitHub (FR-07)
     @Test
     void testSubmitAssignment_SuccessWithGithubLink() {
         SubmitRequest request = new SubmitRequest();
@@ -70,7 +69,6 @@ public class SubmissionServiceTest {
         verify(submissionRepository, times(1)).save(any(Submission.class));
     }
 
-    // UT-02: Kiểm tra nộp bài thành công với File báo cáo (FR-07)
     @Test
     void testSubmitAssignment_SuccessWithReportUrl() {
         SubmitRequest request = new SubmitRequest();
@@ -101,7 +99,6 @@ public class SubmissionServiceTest {
         assertEquals("https://storage.com/report.pdf", result.getReportUrl());
     }
 
-    // UT-03: Kiểm tra giảng viên chấm điểm & để lại feedback thành công (FR-08)
     @Test
     void testGradeSubmission_Success() {
         User mockUser = new User();
@@ -129,7 +126,6 @@ public class SubmissionServiceTest {
         verify(submissionRepository, times(1)).findById(1L);
     }
 
-    // UT-04: Kiểm tra chấm điểm thất bại khi không tồn tại ID bài nộp (FR-08 boundary)
     @Test
     void testGradeSubmission_ThrowsExceptionWhenNotFound() {
         when(submissionRepository.findById(999L)).thenReturn(Optional.empty());
@@ -142,7 +138,6 @@ public class SubmissionServiceTest {
         verify(submissionRepository, never()).save(any(Submission.class));
     }
 
-    // UT-05: Kiểm tra ràng buộc dữ liệu chính xác giữa Học viên và Khóa học trên bài nộp
     @Test
     void testSubmissionBinding_StudentAndCourse() {
         SubmitRequest request = new SubmitRequest();

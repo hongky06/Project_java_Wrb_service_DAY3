@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor  // Sinh constructor không tham số
-@AllArgsConstructor // Sinh constructor chứa ĐẦY ĐỦ tham số (Sẽ giải quyết được lỗi của ông)
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginResponse {
     private String accessToken;
     private String refreshToken;
